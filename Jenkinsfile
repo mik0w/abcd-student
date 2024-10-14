@@ -30,7 +30,7 @@ pipeline {
                 sh '''
                     docker run --name zap \
                         --add-host=host.docker.internal:host-gateway \
-                        -v /home/mik0w_test/abcd/abcd-student/scans/passive.yaml:/zap/wrk/passive.yaml:rw \
+                        -v /home/mik0w_test/abcd/abcd-student/scans/:/zap/wrk/p:rw \
                         -t ghcr.io/zaproxy/zaproxy:stable bash -c \
                         "mkdir -p /zap/wrk/reports && zap.sh -cmd -addonupdate; zap.sh -cmd -addoninstall communityScripts -addoninstall pscanrulesAlpha -addoninstall pscanrulesBeta -autorun /zap/wrk/passive.yaml" \
                         || true
