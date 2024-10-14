@@ -22,8 +22,12 @@ jobs:
       scanOnlyInScope: true
 
   - type: spider
+    parameters:
+      maxDuration: 5
 
   - type: spiderAjax
+    parameters:
+      maxDuration: 5
 
   - type: passiveScan-wait
     parameters:
