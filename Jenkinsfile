@@ -36,7 +36,7 @@ pipeline {
                 //         || true
                 // '''
                 sh '''
-                    docker --user=root run -v /home/mik0w_test/abcd/abcd-student/.zap:/zap/wrk/:rw -t ghcr.io/zaproxy/zaproxy:stable touch /zap/wrk/test.txt
+                    docker run  --user=root -v /home/mik0w_test/abcd/abcd-student/.zap:/zap/wrk/:rw -t ghcr.io/zaproxy/zaproxy:stable touch /zap/wrk/test.txt
                 '''
             }
             // post {
