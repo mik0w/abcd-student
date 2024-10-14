@@ -25,9 +25,9 @@ jobs:
     parameters:
       maxDuration: 5
 
-  - type: spiderAjax
-    parameters:
-      maxDuration: 5
+  # - type: spiderAjax
+  #   parameters:
+  #     maxDuration: 5
 
   - type: passiveScan-wait
     parameters:
