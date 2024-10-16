@@ -47,14 +47,16 @@ pipeline {
                         docker stop zap juice-shop
                         docker rm zap
                     '''
-                }
-                always {
-                    defectDojoPublisher(artifact: '/home/mik0w_test/abcd/abcd-student/.zap/zap_xml_report.xml', 
+                    
+                    defectDojoPublisher(
+                        artifact: "${WORKSPACE}/results/zap_xml_report.xml", 
                         productName: 'Juice Shop', 
                         scanType: 'ZAP Scan', 
-                        engagementName: 'mikolaj@ardoq.com')
+                        engagementName: 'mikolaj@ardoq.com'
+                    )
                 }
             }
+
         }
     }
 }
