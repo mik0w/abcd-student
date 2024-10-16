@@ -48,8 +48,6 @@ pipeline {
                         docker rm zap
                     '''
                 }
-            }
-            post {
                 always {
                     defectDojoPublisher(artifact: '/home/mik0w_test/abcd/abcd-student/.zap/zap_xml_report.xml', 
                         productName: 'Juice Shop', 
