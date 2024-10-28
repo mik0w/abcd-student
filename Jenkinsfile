@@ -64,7 +64,7 @@ pipeline {
                     echo 'Running OSV-Scanner on JuiceShop...'
                     sh '''
                         mkdir -p results/
-                        /go/bin/osv-scanner --lockfile package-lock.json > ${WORKSPACE}/results/osv_scan_results.txt
+                        /go/bin/osv-scanner --lockfile /juice-shop/package-lock.json > ${WORKSPACE}/results/osv_scan_results.txt
                     '''
                 }
             }
