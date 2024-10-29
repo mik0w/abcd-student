@@ -65,13 +65,20 @@ pipeline {
                     sh '''
                         mkdir -p results/
                         ls -la
-                        /go/bin/osv-scanner --lockfile=package-lock.json
+                        npm list --all
+                        /go/bin/osv-scanner --lockfile=package-lock.json --output=results/result.json
+                        cat results/result.json
                     '''
                 }
             }
             post {
                 always {
-                    archiveArtifacts artifacts: 'results/osv_scan_results.txt', allowEmptyArchive: true
+                    //  sh '''
+                    //     docker cp zap:/zap/wrk/reports/zap_html_report.html ${WORKSPACE}/results/zap_html_report.html
+                    //     docker cp zap:/zap/wrk/reports/zap_xml_report.xml ${WORKSPACE}/results/zap_xml_report.xml
+                    //     docker stop zap juice-shop
+                    //     docker rm zap
+                    // '''
                 }
             }
         }
