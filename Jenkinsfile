@@ -66,14 +66,15 @@ pipeline {
                         mkdir -p results/
                         ls -la
                         /go/bin/osv-scanner --lockfile=package-lock.json --output=results/result.json
-                        cat results/result.json
+                        
                     '''
                 }
             }
             post {
                 always {
                     sh '''
-                        ls results/
+                        cd results/
+                        cat result.json
                     '''
                 }
             }
