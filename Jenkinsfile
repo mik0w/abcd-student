@@ -74,8 +74,15 @@ pipeline {
                 always {
                     sh '''
                         cd results/
+                        pwd
                         cat result.json
                     '''
+                    defectDojoPublisher(
+                         artifact: "/home/mik0w_test/abcd/abcd-student/.zap/results/zap_xml_report.xml", 
+                         productName: 'Juice Shop', 
+                         scanType: 'OSV Scan', 
+                         engagementName: 'mikolaj@ardoq.com'
+                     )
                 }
             }
         }
