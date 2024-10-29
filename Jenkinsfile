@@ -78,7 +78,7 @@ pipeline {
                         cat result.json
                     '''
                     defectDojoPublisher(
-                         artifact: "/home/mik0w_test/abcd/abcd-student/.zap/results/zap_xml_report.xml", 
+                         artifact: "/var/jenkins_home/workspace/ABCD_pipeline/results/result.json", 
                          productName: 'Juice Shop', 
                          scanType: 'OSV Scan', 
                          engagementName: 'mikolaj@ardoq.com'
