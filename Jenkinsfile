@@ -64,6 +64,7 @@ pipeline {
                     echo 'Running OSV-Scanner on JuiceShop...'
                     sh '''
                         mkdir -p results/
+                        ls -la
                         /go/bin/osv-scanner --help
                     '''
                 }
