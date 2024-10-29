@@ -65,7 +65,7 @@ pipeline {
                     sh '''
                         mkdir -p results/
                         ls -la
-                        /go/bin/osv-scanner --lockfile=package-lock.json --output=results/result.json
+                        /go/bin/osv-scanner --lockfile=package-lock.json --format json --output=results/result.json
                         
                     '''
                 }
