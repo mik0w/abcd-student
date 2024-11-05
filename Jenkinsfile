@@ -136,12 +136,12 @@ pipeline {
                         ls -a
                         cat semgrep_results.json
                     '''
-                    // defectDojoPublisher(
-                    //      artifact: "/var/jenkins_home/workspace/ABCD_pipeline/res.json", 
-                    //      productName: 'Juice Shop', 
-                    //      scanType: 'Semgrep JSON Report', 
-                    //      engagementName: 'mikolaj@ardoq.com'
-                    //  )
+                    defectDojoPublisher(
+                         artifact: "/var/jenkins_home/workspace/ABCD_pipeline/semgrep_results.json", 
+                         productName: 'Juice Shop', 
+                         scanType: 'Semgrep JSON Report', 
+                         engagementName: 'mikolaj@ardoq.com'
+                     )
                 }
             }
         }
