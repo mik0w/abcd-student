@@ -110,12 +110,12 @@ pipeline {
                         
                         pwd
                     '''
-                    // defectDojoPublisher(
-                    //      artifact: "/var/jenkins_home/workspace/ABCD_pipeline/res.json", 
-                    //      productName: 'Juice Shop', 
-                    //      scanType: 'OSV Scan', 
-                    //      engagementName: 'mikolaj@ardoq.com'
-                    //  )
+                    defectDojoPublisher(
+                         artifact: "/var/jenkins_home/workspace/ABCD_pipeline/res.json", 
+                         productName: 'Juice Shop', 
+                         scanType: 'OSV Scan', 
+                         engagementName: 'mikolaj@ardoq.com'
+                     )
                 }
             }
         }
