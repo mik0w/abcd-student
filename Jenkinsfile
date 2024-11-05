@@ -58,33 +58,64 @@ pipeline {
         //     }
 
         // }
-        stage('[OSV] Vulnerability Scan') {
+        // stage('[OSV] Vulnerability Scan') {
+        //     steps {
+        //         script {
+        //             echo 'Running OSV-Scanner on JuiceShop...'
+        //             sh '''
+        //                 mkdir -p results/
+        //                 ls -la
+        //                 /go/bin/osv-scanner --lockfile=package-lock.json --format json --output=results/result.json
+                        
+        //             '''
+        //         }
+        //     }
+        //     post {
+        //         always {
+        //             sh '''
+        //                 cd results/
+        //                 pwd
+        //                 cat result.json
+        //             '''
+        //             defectDojoPublisher(
+        //                  artifact: "/var/jenkins_home/workspace/ABCD_pipeline/results/result.json", 
+        //                  productName: 'Juice Shop', 
+        //                  scanType: 'OSV Scan', 
+        //                  engagementName: 'mikolaj@ardoq.com'
+        //              )
+        //         }
+        //     }
+        // }
+        stage('Trufflehog Scan') {
             steps {
                 script {
-                    echo 'Running OSV-Scanner on JuiceShop...'
-                    sh '''
-                        mkdir -p results/
-                        ls -la
-                        /go/bin/osv-scanner --lockfile=package-lock.json --format json --output=results/result.json
+                    echo 'Running TruffleHog scan on JuiceShop repo...'
+                    // sh '''
+                    //     mkdir -p results/
+                    //     ls -la
+                    //     /go/bin/osv-scanner --lockfile=package-lock.json --format json --output=results/result.json
                         
-                    '''
-                }
-            }
-            post {
-                always {
+                    // '''
                     sh '''
-                        cd results/
-                        pwd
-                        cat result.json
+                        trufflehog git file://. --only-verified
                     '''
-                    defectDojoPublisher(
-                         artifact: "/var/jenkins_home/workspace/ABCD_pipeline/results/result.json", 
-                         productName: 'Juice Shop', 
-                         scanType: 'OSV Scan', 
-                         engagementName: 'mikolaj@ardoq.com'
-                     )
                 }
             }
+            // post {
+            //     always {
+            //         sh '''
+            //             cd results/
+            //             pwd
+            //             cat result.json
+            //         '''
+            //         defectDojoPublisher(
+            //              artifact: "/var/jenkins_home/workspace/ABCD_pipeline/results/result.json", 
+            //              productName: 'Juice Shop', 
+            //              scanType: 'OSV Scan', 
+            //              engagementName: 'mikolaj@ardoq.com'
+            //          )
+            //     }
+            // }
         }
     }
 }
