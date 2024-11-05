@@ -97,7 +97,7 @@ pipeline {
                         
                     // '''
                     sh '''
-                        trufflehog git file://. --only-verified
+                        trufflehog git file://. --only-verified --json
                     '''
                 }
             }
