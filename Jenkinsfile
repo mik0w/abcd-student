@@ -125,6 +125,7 @@ pipeline {
                     echo 'Running Semgrep scan on JuiceShop repo...'
                     sh '''
                         semgrep --version
+                        semgrep ci
                     '''
                 }
             }
@@ -132,6 +133,7 @@ pipeline {
                 always {
                     sh '''
                         pwd
+
                     '''
                     // defectDojoPublisher(
                     //      artifact: "/var/jenkins_home/workspace/ABCD_pipeline/res.json", 
