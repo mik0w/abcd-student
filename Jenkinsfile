@@ -86,36 +86,59 @@ pipeline {
         //         }
         //     }
         // }
-        stage('Trufflehog Scan') {
+        // stage('Trufflehog Scan') {
+        //     steps {
+        //         script {
+        //             echo 'Running TruffleHog scan on JuiceShop repo...'
+        //             // sh '''
+        //             //     mkdir -p results/
+        //             //     ls -la
+        //             //     /go/bin/osv-scanner --lockfile=package-lock.json --format json --output=results/result.json
+                        
+        //             // '''
+        //             sh '''
+        //                 touch res.json
+        //                 trufflehog git file://. --only-verified --json > res.json
+        //                 cat res.json
+        //             '''
+        //         }
+        //     }
+        //     post {
+        //         always {
+        //             sh '''
+        //                 ls -a
+                        
+        //                 pwd
+        //             '''
+        //             defectDojoPublisher(
+        //                  artifact: "/var/jenkins_home/workspace/ABCD_pipeline/res.json", 
+        //                  productName: 'Juice Shop', 
+        //                  scanType: 'Trufflehog Scan', 
+        //                  engagementName: 'mikolaj@ardoq.com'
+        //              )
+        //         }
+        //     }
+        // }
+        stage('Semgrep Scan') {
             steps {
                 script {
-                    echo 'Running TruffleHog scan on JuiceShop repo...'
-                    // sh '''
-                    //     mkdir -p results/
-                    //     ls -la
-                    //     /go/bin/osv-scanner --lockfile=package-lock.json --format json --output=results/result.json
-                        
-                    // '''
+                    echo 'Running Semgrep scan on JuiceShop repo...'
                     sh '''
-                        touch res.json
-                        trufflehog git file://. --only-verified --json > res.json
-                        cat res.json
+                        semgrep --version
                     '''
                 }
             }
             post {
                 always {
                     sh '''
-                        ls -a
-                        
                         pwd
                     '''
-                    defectDojoPublisher(
-                         artifact: "/var/jenkins_home/workspace/ABCD_pipeline/res.json", 
-                         productName: 'Juice Shop', 
-                         scanType: 'Trufflehog Scan', 
-                         engagementName: 'mikolaj@ardoq.com'
-                     )
+                    // defectDojoPublisher(
+                    //      artifact: "/var/jenkins_home/workspace/ABCD_pipeline/res.json", 
+                    //      productName: 'Juice Shop', 
+                    //      scanType: 'Semgrep JSON Report', 
+                    //      engagementName: 'mikolaj@ardoq.com'
+                    //  )
                 }
             }
         }
