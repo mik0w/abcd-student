@@ -103,21 +103,21 @@ pipeline {
                     '''
                 }
             }
-            // post {
-            //     always {
-            //         sh '''
-            //             cd results/
-            //             pwd
-            //             cat result.json
-            //         '''
-            //         defectDojoPublisher(
-            //              artifact: "/var/jenkins_home/workspace/ABCD_pipeline/results/result.json", 
-            //              productName: 'Juice Shop', 
-            //              scanType: 'OSV Scan', 
-            //              engagementName: 'mikolaj@ardoq.com'
-            //          )
-            //     }
-            // }
+            post {
+                always {
+                    sh '''
+                        ls -a
+                        
+                        pwd
+                    '''
+                    // defectDojoPublisher(
+                    //      artifact: "/var/jenkins_home/workspace/ABCD_pipeline/res.json", 
+                    //      productName: 'Juice Shop', 
+                    //      scanType: 'OSV Scan', 
+                    //      engagementName: 'mikolaj@ardoq.com'
+                    //  )
+                }
+            }
         }
     }
 }
