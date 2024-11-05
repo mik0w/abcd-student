@@ -133,7 +133,8 @@ pipeline {
                 always {
                     sh '''
                         pwd
-
+                        ls -a
+                        cat semgrep_results.json
                     '''
                     // defectDojoPublisher(
                     //      artifact: "/var/jenkins_home/workspace/ABCD_pipeline/res.json", 
