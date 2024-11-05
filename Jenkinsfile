@@ -125,7 +125,7 @@ pipeline {
                     echo 'Running Semgrep scan on JuiceShop repo...'
                     sh '''
                         semgrep --version
-                        semgrep --config=p/ci
+                        semgrep --config=p/ci --json > semgrep_results.json
                     '''
                 }
             }
