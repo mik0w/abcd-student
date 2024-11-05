@@ -113,7 +113,7 @@ pipeline {
                     defectDojoPublisher(
                          artifact: "/var/jenkins_home/workspace/ABCD_pipeline/res.json", 
                          productName: 'Juice Shop', 
-                         scanType: 'OSV Scan', 
+                         scanType: 'Trufflehog Scan', 
                          engagementName: 'mikolaj@ardoq.com'
                      )
                 }
